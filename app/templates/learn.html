@@ -1,0 +1,123 @@
+{% extends "base.html" %}
+
+{% macro grid(columns, rows, kind, removed, changed, spaces) %}
+<div class="sheet-scroll">
+  <table class="sheet example-table">
+    <thead>
+      <tr>
+        <th class="gutter" scope="col"><span class="visually-hidden">Row</span></th>
+        {% for c in columns %}<th scope="col">{{ c }}</th>{% endfor %}
+      </tr>
+    </thead>
+    <tbody>
+      {% for row in rows %}
+      {% set r = loop.index0 %}
+      <tr{% if kind == "before" and r in removed %} class="is-removed"{% endif %}>
+        <th class="gutter" scope="row">{{ r + 1 }}</th>
+        {% for cell in row %}
+        {% set c = loop.index0 %}
+        {% if cell is none %}
+        <td class="is-empty"><span class="empty-mark">empty</span></td>
+        {% elif kind == "after" and [r, c] in changed %}
+        <td class="is-changed">{{ cell | replace(" ", "·") if spaces else cell }}</td>
+        {% else %}
+        <td>{{ cell | replace(" ", "·") if spaces else cell }}</td>
+        {% endif %}
+        {% endfor %}
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
+{% endmacro %}
+
+{% block title %}Learn Data Cleaning · CleanSheet{% endblock %}
+{% block head %}<link rel="stylesheet" href="/static/css/learn.css">{% endblock %}
+{% block body_class %}learn-page{% endblock %}
+
+{% block content %}
+<article class="learn">
+  <header class="learn-hero">
+    <p class="eyebrow">Learn Data Cleaning</p>
+    <h1>How each cleaning method works, in plain English</h1>
+    <p class="lede">Every method in CleanSheet follows fixed rules and simple statistics. There is no AI and no guessing. Read what a method does, when it helps and when to leave it alone.</p>
+    <p class="hero-note">This page only teaches. It never reads, changes or shows a file you have uploaded.
+      <a class="back-link" href="/">Back to the workspace</a></p>
+    <ul class="legend" aria-label="How to read the examples">
+      <li><span class="swatch swatch-changed" aria-hidden="true"></span> Changed cell</li>
+      <li><span class="swatch swatch-empty" aria-hidden="true"></span> Empty cell</li>
+      <li><span class="swatch swatch-removed" aria-hidden="true"></span> Removed row</li>
+    </ul>
+  </header>
+
+  <div class="learn-layout">
+    <nav class="toc" aria-label="Topics">
+      <details class="toc-details" open>
+        <summary>Topics</summary>
+        {% for group in groups %}
+        <h2 class="toc-group">{{ group }}</h2>
+        <ol class="toc-list">
+          {% for t in topics if t.group == group %}
+          <li><a href="#{{ t.slug }}">{{ t.title }}</a></li>
+          {% endfor %}
+        </ol>
+        {% endfor %}
+      </details>
+    </nav>
+
+    <div class="topics">
+      {% for t in topics %}
+      <section class="topic" id="{{ t.slug }}" aria-labelledby="{{ t.slug }}-title">
+        <p class="topic-meta">
+          <span class="topic-num" aria-hidden="true">{{ "%02d" | format(loop.index) }}</span>
+          <span class="chip chip-accent">{{ t.group }}</span>
+          <span class="where">{{ t.where_in_app }}</span>
+        </p>
+        <h2 class="topic-title" id="{{ t.slug }}-title">{{ t.title }}</h2>
+        <p class="topic-summary">{{ t.summary }}</p>
+
+        <figure class="plate">
+          <img src="/static/img/learn/{{ t.image }}" alt="{{ t.image_alt }}" width="640" height="300" loading="lazy">
+        </figure>
+
+        <div class="why">
+          <h3>Why it helps</h3>
+          <p>{{ t.why }}</p>
+        </div>
+
+        <div class="use-avoid">
+          <div class="use">
+            <h3>Use it when</h3>
+            <ul>{% for item in t.when_use %}<li>{{ item }}</li>{% endfor %}</ul>
+          </div>
+          <div class="avoid">
+            <h3>Do not use it when</h3>
+            <ul>{% for item in t.when_avoid %}<li>{{ item }}</li>{% endfor %}</ul>
+          </div>
+        </div>
+
+        <div class="example">
+          <h3>Before and after</h3>
+          <p class="caption">{{ t.example.caption }}</p>
+          <div class="example-pair">
+            <div class="example-side">
+              <h4>Before</h4>
+              {{ grid(t.example.columns, t.example.before, "before", t.example.removed_rows, t.example.changed_cells, t.example.get("show_spaces")) }}
+            </div>
+            <div class="example-side">
+              <h4>After</h4>
+              {{ grid(t.example.columns, t.example.after, "after", t.example.removed_rows, t.example.changed_cells, t.example.get("show_spaces")) }}
+            </div>
+          </div>
+        </div>
+
+        {% if t.get("tip") %}
+        <p class="tip"><strong>In CleanSheet:</strong> {{ t.tip }}</p>
+        {% endif %}
+        <p class="to-top"><a href="#main">Back to the top</a></p>
+      </section>
+      {% endfor %}
+    </div>
+  </div>
+</article>
+{% endblock %}

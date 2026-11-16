@@ -1,0 +1,131 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 300" width="640" height="300" role="img" aria-labelledby="ttl dsc">
+<title id="ttl">Duplicate rows removed</title>
+<desc id="dsc">Five rows on the left include two repeats of earlier rows, struck through. On the right only the first copy of each row remains, giving three rows.</desc>
+<defs>
+<style>
+.bg{fill:#fff;stroke:#d7ddd9;stroke-width:1.5}
+.cell{fill:#fff;stroke:#b9c3bd;stroke-width:1.4}
+.hdr{fill:#f6f8f7;stroke:#b9c3bd;stroke-width:1.4}
+.gap{fill:url(#hatch);stroke:#b9c3bd;stroke-width:1.4}
+.pad{fill:url(#hatch);stroke:none}
+.ok{fill:#e2f1e8;stroke:#17724a;stroke-width:1.6}
+.mark{fill:#fff0a0;stroke:#c9a800;stroke-width:1.6}
+.bad{fill:#fdecea;stroke:#b3261e;stroke-width:1.6}
+.info{fill:#e8f0f7;stroke:#1f4e79;stroke-width:1.6}
+.sel{fill:none;stroke:#17724a;stroke-width:2.6}
+.handle{fill:#17724a;stroke:#fff;stroke-width:2}
+.accfill{fill:#17724a}
+.onacc{fill:#fff;font-weight:700}
+.hatchline{stroke:#56655d;stroke-opacity:.5;stroke-width:1.3}
+.t{fill:#18231e}
+.tb{fill:#18231e;font-weight:700}
+.s{fill:#56655d}
+.sb{fill:#56655d;font-weight:700}
+.acc{fill:#0f5836;font-weight:700}
+.mk{fill:#4d3f00}
+.bd{fill:#b3261e;font-weight:700}
+.nf{fill:#1f4e79;font-weight:700}
+.wt{fill:#8a5300;font-weight:700}
+.line{stroke:#56655d;stroke-width:1.6;fill:none}
+.arrow{stroke:#17724a;stroke-width:2.4;fill:none}
+.arrowhead{fill:#17724a}
+.strike{stroke:#b3261e;stroke-width:2.2;fill:none}
+.bar{fill:#b9c3bd}
+.baracc{fill:#17724a}
+.accline{stroke:#17724a;stroke-width:2.6;fill:none}
+.dashacc{stroke:#17724a;stroke-width:2;stroke-dasharray:6 4;fill:none}
+.warnline{stroke:#8a5300;stroke-width:2.2;stroke-dasharray:6 4;fill:none}
+.dot{fill:#56655d}
+.dotwarn{fill:#8a5300}
+.dashed{stroke-dasharray:5 4}
+.f{font-family:system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif}
+.m{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,"Liberation Mono",monospace}
+@media (prefers-color-scheme:dark){
+.bg{fill:#171e1b;stroke:#2b3732}
+.cell{fill:#1d2622;stroke:#3d4c45}
+.hdr{fill:#232e29;stroke:#3d4c45}
+.gap{stroke:#3d4c45}
+.ok{fill:#1b3a2b;stroke:#4cc38a}
+.mark{fill:#5a4e10;stroke:#b39b22}
+.bad{fill:#3a1c1a;stroke:#ff9a92}
+.info{fill:#1a2a3a;stroke:#9cc4ec}
+.sel{stroke:#4cc38a}
+.handle{fill:#4cc38a;stroke:#171e1b}
+.accfill{fill:#4cc38a}
+.onacc{fill:#07140e}
+.hatchline{stroke:#9aaba2;stroke-opacity:.5}
+.t,.tb{fill:#e6ede9}
+.s,.sb{fill:#9aaba2}
+.acc{fill:#7bd9ab}
+.mk{fill:#fff3b0}
+.bd{fill:#ff9a92}
+.nf{fill:#9cc4ec}
+.wt{fill:#f0c36b}
+.line{stroke:#9aaba2}
+.arrow{stroke:#4cc38a}
+.arrowhead{fill:#4cc38a}
+.strike{stroke:#ff9a92}
+.bar{fill:#3d4c45}
+.baracc{fill:#4cc38a}
+.accline{stroke:#4cc38a}
+.dashacc{stroke:#4cc38a}
+.warnline{stroke:#f0c36b}
+.dot{fill:#9aaba2}
+.dotwarn{fill:#f0c36b}
+}
+</style>
+<pattern id="hatch" width="7" height="7" patternUnits="userSpaceOnUse" patternTransform="rotate(45)"><line x1="0" y1="0" x2="0" y2="7" class="hatchline"/></pattern>
+<marker id="ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="12" markerHeight="12" markerUnits="userSpaceOnUse" orient="auto"><path class="arrowhead" d="M0 0L10 5L0 10z"/></marker>
+</defs>
+<rect class="bg" x="1" y="1" width="638" height="298" rx="6"/>
+<text class="sb f" x="40" y="36" font-size="13" text-anchor="start">Before: 5 rows</text>
+<rect class="hdr" x="40" y="50" width="74" height="28" rx="2"/>
+<text class="sb f" x="77.0" y="68.5" font-size="12.5" text-anchor="middle">Order</text>
+<rect class="hdr" x="114" y="50" width="96" height="28" rx="2"/>
+<text class="sb f" x="162.0" y="68.5" font-size="12.5" text-anchor="middle">Customer</text>
+<rect class="cell" x="40" y="78" width="74" height="36" rx="2"/>
+<text class="t m" x="77.0" y="101.0" font-size="14" text-anchor="middle">1001</text>
+<rect class="cell" x="114" y="78" width="96" height="36" rx="2"/>
+<text class="t m" x="162.0" y="101.0" font-size="14" text-anchor="middle">Ann</text>
+<rect class="cell" x="40" y="114" width="74" height="36" rx="2"/>
+<text class="t m" x="77.0" y="137.0" font-size="14" text-anchor="middle">1002</text>
+<rect class="cell" x="114" y="114" width="96" height="36" rx="2"/>
+<text class="t m" x="162.0" y="137.0" font-size="14" text-anchor="middle">Bo</text>
+<rect class="bad" x="40" y="150" width="74" height="36" rx="2"/>
+<text class="bd m" x="77.0" y="173.0" font-size="14" text-anchor="middle">1001</text>
+<rect class="bad" x="114" y="150" width="96" height="36" rx="2"/>
+<text class="bd m" x="162.0" y="173.0" font-size="14" text-anchor="middle">Ann</text>
+<rect class="cell" x="40" y="186" width="74" height="36" rx="2"/>
+<text class="t m" x="77.0" y="209.0" font-size="14" text-anchor="middle">1003</text>
+<rect class="cell" x="114" y="186" width="96" height="36" rx="2"/>
+<text class="t m" x="162.0" y="209.0" font-size="14" text-anchor="middle">Cy</text>
+<rect class="bad" x="40" y="222" width="74" height="36" rx="2"/>
+<text class="bd m" x="77.0" y="245.0" font-size="14" text-anchor="middle">1002</text>
+<rect class="bad" x="114" y="222" width="96" height="36" rx="2"/>
+<text class="bd m" x="162.0" y="245.0" font-size="14" text-anchor="middle">Bo</text>
+<path class="strike" d="M34 168L216 168"/>
+<text class="bd f" x="226" y="172" font-size="12.5" text-anchor="start">repeat</text>
+<path class="strike" d="M34 240L216 240"/>
+<text class="bd f" x="226" y="244" font-size="12.5" text-anchor="start">repeat</text>
+<path class="arrow" d="M290 168L372 168" marker-end="url(#ah)"/>
+<text class="s f" x="331" y="152" font-size="12.5" text-anchor="middle">keep the first</text>
+<text class="sb f" x="410" y="36" font-size="13" text-anchor="start">After: 3 rows</text>
+<rect class="hdr" x="410" y="50" width="74" height="28" rx="2"/>
+<text class="sb f" x="447.0" y="68.5" font-size="12.5" text-anchor="middle">Order</text>
+<rect class="hdr" x="484" y="50" width="96" height="28" rx="2"/>
+<text class="sb f" x="532.0" y="68.5" font-size="12.5" text-anchor="middle">Customer</text>
+<rect class="ok" x="410" y="78" width="74" height="36" rx="2"/>
+<text class="t m" x="447.0" y="101.0" font-size="14" text-anchor="middle">1001</text>
+<rect class="ok" x="484" y="78" width="96" height="36" rx="2"/>
+<text class="t m" x="532.0" y="101.0" font-size="14" text-anchor="middle">Ann</text>
+<rect class="ok" x="410" y="114" width="74" height="36" rx="2"/>
+<text class="t m" x="447.0" y="137.0" font-size="14" text-anchor="middle">1002</text>
+<rect class="ok" x="484" y="114" width="96" height="36" rx="2"/>
+<text class="t m" x="532.0" y="137.0" font-size="14" text-anchor="middle">Bo</text>
+<rect class="ok" x="410" y="150" width="74" height="36" rx="2"/>
+<text class="t m" x="447.0" y="173.0" font-size="14" text-anchor="middle">1003</text>
+<rect class="ok" x="484" y="150" width="96" height="36" rx="2"/>
+<text class="t m" x="532.0" y="173.0" font-size="14" text-anchor="middle">Cy</text>
+<text class="s f" x="410" y="214" font-size="12.5" text-anchor="start">The first copy of each</text>
+<text class="s f" x="410" y="231" font-size="12.5" text-anchor="start">row is the one kept.</text>
+</svg>

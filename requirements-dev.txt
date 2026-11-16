@@ -1,0 +1,9 @@
+-r requirements.txt
+
+# Test suite
+pytest>=9.1
+httpx2>=2.13          # used by FastAPI's TestClient
+
+# Optional: the real-browser tests in tests/e2e (they are skipped automatically when this is missing).
+# After installing, run once:  python -m playwright install chromium
+playwright>=1.63

@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{% block title %}CleanSheet{% endblock %}</title>
+  <meta name="description" content="CleanSheet cleans spreadsheets with fixed, explainable rules. No AI, no accounts, no external services.">
+  <link rel="icon" href="/static/img/brand.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="/static/css/base.css">
+  {% block head %}{% endblock %}
+</head>
+<body class="{% block body_class %}{% endblock %}">
+  <a class="visually-hidden" href="#main">Skip to content</a>
+  <header class="topbar">
+    <div class="topbar-inner">
+      <a class="brand" href="/">
+        <img class="brand-mark" src="/static/img/brand.svg" alt="" width="26" height="26">
+        CleanSheet
+      </a>
+      <nav class="mainnav" aria-label="Main">
+        <a href="/"{% if nav_current == "workspace" %} aria-current="page"{% endif %}>Workspace</a>
+        <a href="/learn"{% if nav_current == "learn" %} aria-current="page"{% endif %}>Learn Data Cleaning</a>
+      </nav>
+      <span class="privacy-note">Files stay on this server. Nothing is sent anywhere else.</span>
+    </div>
+  </header>
+  <main class="page" id="main">
+    {% block content %}{% endblock %}
+  </main>
+  <footer class="footer">
+    CleanSheet uses fixed rules and plain statistics. There is no AI and no external service behind it.
+    <br>
+    ~ Gaurav Kankuse
+  </footer>
+  {% block scripts %}{% endblock %}
+</body>
+</html>

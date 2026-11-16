@@ -1,0 +1,133 @@
+{% extends "base.html" %}
+
+{% block title %}Workspace · CleanSheet{% endblock %}
+{% block head %}<link rel="stylesheet" href="/static/css/workspace.css">{% endblock %}
+{% block body_class %}workspace-page{% endblock %}
+
+{% block content %}
+<div class="workbook" id="workbook">
+
+  <nav class="steps" aria-label="Cleaning steps">
+    <ol>
+      <li><button type="button" class="step-tab" data-step="1" aria-current="step"><span class="step-num">1</span><span class="step-name">Basic cleaning</span><span class="step-state" data-state-for="1"></span></button></li>
+      <li><button type="button" class="step-tab" data-step="2" disabled><span class="step-num">2</span><span class="step-name">Advanced cleaning</span><span class="step-state" data-state-for="2"></span></button></li>
+      <li><button type="button" class="step-tab" data-step="3" disabled><span class="step-num">3</span><span class="step-name">Review &amp; export</span><span class="step-state" data-state-for="3"></span></button></li>
+    </ol>
+  </nav>
+
+  <div class="messages" id="messages" role="alert" aria-live="assertive"></div>
+  <div class="visually-hidden" id="status" role="status" aria-live="polite"></div>
+
+  <!-- ================================================= STEP 1 ================================================= -->
+  <section class="panel" id="panel-1" data-step="1" aria-labelledby="h-1">
+    <header class="panel-head">
+      <h1 id="h-1" tabindex="-1">Step 1 · Basic cleaning</h1>
+      <a class="learn-link" href="/learn#remove-duplicates" target="_blank" rel="noopener">How these methods work</a>
+    </header>
+
+    <div id="upload-card" class="upload">
+      <div class="dropzone" id="dropzone">
+        <p class="dropzone-title">Drop a CSV or XLSX file here</p>
+        <p class="dropzone-sub">or</p>
+        <label class="btn btn-primary" for="file-input">Choose a file</label>
+        <input type="file" id="file-input" class="visually-hidden" accept=".csv,.xlsx">
+        <p class="dropzone-limits">Up to {{ limits.max_upload_mb }} MB, {{ "{:,}".format(limits.max_rows) }} rows and {{ limits.max_cols }} columns. Your file is processed on this server only and never sent anywhere else.</p>
+      </div>
+    </div>
+
+    <div id="loaded" hidden>
+      <div class="filebar">
+        <div>
+          <span class="filebar-name" id="file-name"></span>
+          <span class="filebar-meta" id="file-meta"></span>
+        </div>
+        <button type="button" class="btn btn-quiet" id="replace-file">Use a different file</button>
+      </div>
+      <div id="load-notes"></div>
+      <ul class="found" id="scan-found" aria-label="What was found in the file"></ul>
+
+      <form id="basic-form" class="ops" novalidate>
+        <fieldset class="op">
+          <legend>Duplicate rows</legend>
+          <label class="check"><input type="checkbox" id="opt-dedupe" checked> Remove duplicate rows (the first copy is kept)</label>
+          <div class="op-sub" id="dedupe-sub">
+            <label class="check"><input type="radio" name="dedupe-mode" value="all" checked> Compare all columns</label>
+            <label class="check"><input type="radio" name="dedupe-mode" value="subset"> Compare only the columns I select</label>
+            <div class="picker" id="dedupe-picker" hidden>
+              <div class="picker-tools">
+                <input type="text" id="dedupe-filter" placeholder="Filter columns" aria-label="Filter columns">
+                <button type="button" class="btn btn-quiet" id="dedupe-all">Select all</button>
+                <button type="button" class="btn btn-quiet" id="dedupe-none">Select none</button>
+              </div>
+              <div class="picker-list" id="dedupe-list"></div>
+            </div>
+          </div>
+        </fieldset>
+
+        <fieldset class="op">
+          <legend>Whitespace</legend>
+          <label class="check"><input type="checkbox" id="opt-trim" checked> Trim spaces at the start and end of every cell</label>
+        </fieldset>
+
+        <fieldset class="op">
+          <legend>Missing-value placeholders</legend>
+          <label class="check"><input type="checkbox" id="opt-missing" checked> Turn placeholders such as N/A, null, none and “-” into empty cells</label>
+          <p class="op-note" id="token-note"></p>
+        </fieldset>
+
+        <fieldset class="op" id="op-binary" hidden>
+          <legend>Yes/No columns</legend>
+          <p class="op-note">These columns hold only two states. Each one is converted on its own, and only if you choose a format.</p>
+          <div class="binary-list" id="binary-list"></div>
+        </fieldset>
+
+        <div class="btn-row">
+          <button type="submit" class="btn btn-primary" id="apply-basic">Apply basic cleaning</button>
+          <span class="stale-note" id="basic-stale" hidden>You changed options that are not applied yet.</span>
+        </div>
+      </form>
+
+      <div id="basic-results" class="results" hidden></div>
+    </div>
+  </section>
+
+  <!-- ================================================= STEP 2 ================================================= -->
+  <section class="panel" id="panel-2" data-step="2" aria-labelledby="h-2" hidden>
+    <header class="panel-head">
+      <h1 id="h-2" tabindex="-1">Step 2 · Advanced cleaning</h1>
+      <a class="learn-link" href="/learn#handling-missing-values" target="_blank" rel="noopener">How these methods work</a>
+    </header>
+    <p class="panel-intro" id="s2-intro"></p>
+    <div id="s2-loading" class="loading" hidden>Analysing your columns…</div>
+    <div id="s2-body" hidden>
+      <div id="s2-confirm"></div>
+      <div class="subtabs" role="tablist" aria-label="Advanced cleaning sections">
+        <button type="button" role="tab" id="tab-missing" class="subtab" data-tab="missing" aria-selected="true" aria-controls="tabpanel-missing">Missing values</button>
+        <button type="button" role="tab" id="tab-text" class="subtab" data-tab="text" aria-selected="false" aria-controls="tabpanel-text" tabindex="-1">Text standardization</button>
+        <button type="button" role="tab" id="tab-types" class="subtab" data-tab="types" aria-selected="false" aria-controls="tabpanel-types" tabindex="-1">Data types</button>
+      </div>
+      <div class="tabpanel" id="tabpanel-missing" role="tabpanel" aria-labelledby="tab-missing"></div>
+      <div class="tabpanel" id="tabpanel-text" role="tabpanel" aria-labelledby="tab-text" hidden></div>
+      <div class="tabpanel" id="tabpanel-types" role="tabpanel" aria-labelledby="tab-types" hidden></div>
+      <div class="actionbar">
+        <p class="plan-summary" id="plan-summary"></p>
+        <div class="btn-row">
+          <button type="button" class="btn" id="s2-back">← Back to Step 1</button>
+          <button type="button" class="btn btn-primary" id="s2-apply">Apply and review →</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================================================= STEP 3 ================================================= -->
+  <section class="panel" id="panel-3" data-step="3" aria-labelledby="h-3" hidden>
+    <header class="panel-head">
+      <h1 id="h-3" tabindex="-1">Step 3 · Review &amp; export</h1>
+    </header>
+    <div id="s3-body"></div>
+  </section>
+
+</div>
+{% endblock %}
+
+{% block scripts %}<script type="module" src="/static/js/app.js"></script>{% endblock %}

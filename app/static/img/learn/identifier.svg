@@ -1,0 +1,108 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 300" width="640" height="300" role="img" aria-labelledby="ttl dsc">
+<title id="ttl">Identifier handling</title>
+<desc id="dsc">The ID 00123 sits in a cell with a lock icon and stays as text. The number 123 is crossed out, and the actions average, change case and convert to number are crossed out as never applied to an ID.</desc>
+<defs>
+<style>
+.bg{fill:#fff;stroke:#d7ddd9;stroke-width:1.5}
+.cell{fill:#fff;stroke:#b9c3bd;stroke-width:1.4}
+.hdr{fill:#f6f8f7;stroke:#b9c3bd;stroke-width:1.4}
+.gap{fill:url(#hatch);stroke:#b9c3bd;stroke-width:1.4}
+.pad{fill:url(#hatch);stroke:none}
+.ok{fill:#e2f1e8;stroke:#17724a;stroke-width:1.6}
+.mark{fill:#fff0a0;stroke:#c9a800;stroke-width:1.6}
+.bad{fill:#fdecea;stroke:#b3261e;stroke-width:1.6}
+.info{fill:#e8f0f7;stroke:#1f4e79;stroke-width:1.6}
+.sel{fill:none;stroke:#17724a;stroke-width:2.6}
+.handle{fill:#17724a;stroke:#fff;stroke-width:2}
+.accfill{fill:#17724a}
+.onacc{fill:#fff;font-weight:700}
+.hatchline{stroke:#56655d;stroke-opacity:.5;stroke-width:1.3}
+.t{fill:#18231e}
+.tb{fill:#18231e;font-weight:700}
+.s{fill:#56655d}
+.sb{fill:#56655d;font-weight:700}
+.acc{fill:#0f5836;font-weight:700}
+.mk{fill:#4d3f00}
+.bd{fill:#b3261e;font-weight:700}
+.nf{fill:#1f4e79;font-weight:700}
+.wt{fill:#8a5300;font-weight:700}
+.line{stroke:#56655d;stroke-width:1.6;fill:none}
+.arrow{stroke:#17724a;stroke-width:2.4;fill:none}
+.arrowhead{fill:#17724a}
+.strike{stroke:#b3261e;stroke-width:2.2;fill:none}
+.bar{fill:#b9c3bd}
+.baracc{fill:#17724a}
+.accline{stroke:#17724a;stroke-width:2.6;fill:none}
+.dashacc{stroke:#17724a;stroke-width:2;stroke-dasharray:6 4;fill:none}
+.warnline{stroke:#8a5300;stroke-width:2.2;stroke-dasharray:6 4;fill:none}
+.dot{fill:#56655d}
+.dotwarn{fill:#8a5300}
+.dashed{stroke-dasharray:5 4}
+.f{font-family:system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif}
+.m{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,"Liberation Mono",monospace}
+@media (prefers-color-scheme:dark){
+.bg{fill:#171e1b;stroke:#2b3732}
+.cell{fill:#1d2622;stroke:#3d4c45}
+.hdr{fill:#232e29;stroke:#3d4c45}
+.gap{stroke:#3d4c45}
+.ok{fill:#1b3a2b;stroke:#4cc38a}
+.mark{fill:#5a4e10;stroke:#b39b22}
+.bad{fill:#3a1c1a;stroke:#ff9a92}
+.info{fill:#1a2a3a;stroke:#9cc4ec}
+.sel{stroke:#4cc38a}
+.handle{fill:#4cc38a;stroke:#171e1b}
+.accfill{fill:#4cc38a}
+.onacc{fill:#07140e}
+.hatchline{stroke:#9aaba2;stroke-opacity:.5}
+.t,.tb{fill:#e6ede9}
+.s,.sb{fill:#9aaba2}
+.acc{fill:#7bd9ab}
+.mk{fill:#fff3b0}
+.bd{fill:#ff9a92}
+.nf{fill:#9cc4ec}
+.wt{fill:#f0c36b}
+.line{stroke:#9aaba2}
+.arrow{stroke:#4cc38a}
+.arrowhead{fill:#4cc38a}
+.strike{stroke:#ff9a92}
+.bar{fill:#3d4c45}
+.baracc{fill:#4cc38a}
+.accline{stroke:#4cc38a}
+.dashacc{stroke:#4cc38a}
+.warnline{stroke:#f0c36b}
+.dot{fill:#9aaba2}
+.dotwarn{fill:#f0c36b}
+}
+</style>
+<pattern id="hatch" width="7" height="7" patternUnits="userSpaceOnUse" patternTransform="rotate(45)"><line x1="0" y1="0" x2="0" y2="7" class="hatchline"/></pattern>
+<marker id="ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="12" markerHeight="12" markerUnits="userSpaceOnUse" orient="auto"><path class="arrowhead" d="M0 0L10 5L0 10z"/></marker>
+</defs>
+<rect class="bg" x="1" y="1" width="638" height="298" rx="6"/>
+<text class="sb f" x="50" y="60" font-size="12.5" text-anchor="start">Customer ID</text>
+<rect class="ok" x="50" y="70" width="160" height="56" rx="2"/>
+<text class="t m" x="130.0" y="105.9" font-size="22" text-anchor="middle">00123</text>
+<rect class="accfill" x="226" y="98" width="24" height="18" rx="3"/>
+<path class="accline" d="M231 98v-7a7 7 0 0 1 14 0v7"/>
+<text class="s f" x="50" y="148" font-size="13" text-anchor="start">Kept as text: the zeros stay.</text>
+<rect class="bad" x="50" y="178" width="100" height="40" rx="2"/>
+<text class="bd m" x="100.0" y="204.5" font-size="18" text-anchor="middle">123</text>
+<path class="strike" d="M44 198L156 198"/>
+<text class="s f" x="164" y="194" font-size="12.5" text-anchor="start">As a number, the</text>
+<text class="s f" x="164" y="210" font-size="12.5" text-anchor="start">zeros would be lost.</text>
+<text class="tb f" x="350" y="52" font-size="14" text-anchor="start">Never done to an ID</text>
+<rect class="bad" x="350" y="64" width="270" height="34" rx="2"/>
+<text class="bd f" x="361" y="85.9" font-size="13.5" text-anchor="start">Average (mean or median)</text>
+<path class="strike" d="M598 74L610 88"/>
+<path class="strike" d="M610 74L598 88"/>
+<rect class="bad" x="350" y="108" width="270" height="34" rx="2"/>
+<text class="bd f" x="361" y="129.9" font-size="13.5" text-anchor="start">Change the case</text>
+<path class="strike" d="M598 118L610 132"/>
+<path class="strike" d="M610 118L598 132"/>
+<rect class="bad" x="350" y="152" width="270" height="34" rx="2"/>
+<text class="bd f" x="361" y="173.9" font-size="13.5" text-anchor="start">Convert to a number</text>
+<path class="strike" d="M598 162L610 176"/>
+<path class="strike" d="M610 162L598 176"/>
+<text class="tb f" x="350" y="216" font-size="14" text-anchor="start">Allowed</text>
+<text class="s f" x="350" y="236" font-size="12.5" text-anchor="start">Look it up from a related column,</text>
+<text class="s f" x="350" y="253" font-size="12.5" text-anchor="start">type a value, remove rows, or keep.</text>
+</svg>

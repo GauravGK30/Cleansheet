@@ -1,0 +1,8 @@
+# CleanSheet runtime dependencies. No AI, no machine learning, no external services, no API keys.
+# Lower bounds are the versions the test-suite was run against (pandas 2.3.3 and 3.0.5 both pass).
+fastapi>=0.162
+uvicorn>=0.54
+pandas>=2.3,<4
+numpy>=2.2
+openpyxl>=3.1.5,<4
+Jinja2>=3.1.6
